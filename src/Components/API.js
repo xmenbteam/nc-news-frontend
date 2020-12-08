@@ -7,8 +7,23 @@ const newsAPI = axios.create({
 export const getArticles = () => {
     return newsAPI.get('/articles')
         .then(response => {
-            console.log('response data', response.data)
+            // console.log('response data', response.data)
             return response.data
         }
         )
+}
+
+export const getArticleById = (article_id) => {
+    return newsAPI.get(`/articles/${article_id}`)
+        .then(response => {
+            // console.log('articlebyid', response.data.article)
+            return response.data.article
+        })
+}
+
+export const getCommentsByArticleId = (article_id) => {
+    return newsAPI.get(`/articles/${article_id}/comments`)
+        .then(response => {
+            return response.data
+        })
 }
