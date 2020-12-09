@@ -27,3 +27,11 @@ export const getCommentsByArticleId = (article_id) => {
             return response.data
         })
 }
+
+export const voterGuy = (article_id) => {
+    console.log(article_id, 'voterguyarticleid')
+    return newsAPI.patch(`/articles/${article_id}`, { inc_votes: 1 })
+        .then(response => {
+            console.log(response, 'voterguy reposnse')
+        })
+}

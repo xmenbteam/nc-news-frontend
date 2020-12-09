@@ -1,24 +1,25 @@
-// import React, { Component } from 'react';
-// import { getCommentsByArticleId } from './API'
+import React from 'react';
+import Voter from './Voter'
 
-// class Comments extends Component {
+const Comments = ({ comments }) => {
 
-//     state = { comments: {}, isLoading: true }
+    return (
+        <div>
+            {console.log(comments)}
+            <ul className='comments__list'>
+                {comments.map((comment) => {
+                    return (
+                        <li key={comment.comment_id}>
+                            <h4>By {comment.author}:</h4>
+                            <p className='comment__body'>{comment.body}</p>
 
-//     componentDidMount = (props) => {
-//         console.log(props, 'props')
-//         getCommentsByArticleId(this.props.article_id).then(
-//             console.log('article', this.props)
-//         )
-//     }
+                            <Voter id={comment.comment_id} votes={comment.votes} />
+                        </li>
+                    )
+                })}
+            </ul>
+        </div>
+    );
+};
 
-//     render() {
-//         return (
-//             <div>
-//                 <h1>Comments!</h1>
-//             </div>
-//         );
-//     }
-// }
-
-// export default Comments;
+export default Comments;

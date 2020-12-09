@@ -7,15 +7,16 @@ class Nav extends Component {
         return (
             <nav>
                 <ul className='nav'>
-                    <li className='nav__btn'>
-                        <Link to='/'>Home</Link>
+                    <li >
+                        <Link to='/' className='nav__btn'>Home</Link>
                     </li>
-                    <li className='nav__btn'>
-                        <Link to='/articles'>Articles</Link>
+                    <li>
+                        <Link to='/articles' className='nav__btn'>Articles</Link>
                     </li>
-                    <li className='nav__btn'>
-                        <Link to='/topics'>Topics</Link>
+                    <li>
+                        <Link to='/topics' className='nav__btn'>Topics</Link>
                     </li>
+
 
                 </ul>
             </nav>
