@@ -34,7 +34,7 @@ class ArticleList extends Component {
                                     <h3 className='article__card--title'><Link to={`/articles/${article.article_id}`}>{article.title}</Link></h3>
                                     <p className='article__card--element'>By {article.author}</p>
                                     <p className='article__card--element'>{article.topic}</p>
-                                    <p className='article__card--element'>Created {new Date(article.created_at).toDateString()} </p>
+                                    <p className='article__card--element'>Created: {new Date(article.created_at).toDateString()} </p>
                                     <Voter article_id={article.article_id} votes={article.votes} />
                                     <p className='article_card--element'> Comments: {article.comment_count}</p>
 

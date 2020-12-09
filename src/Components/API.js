@@ -28,10 +28,18 @@ export const getCommentsByArticleId = (article_id) => {
         })
 }
 
-export const voterGuy = (article_id) => {
-    console.log(article_id, 'voterguyarticleid')
-    return newsAPI.patch(`/articles/${article_id}`, { inc_votes: 1 })
-        .then(response => {
-            console.log(response, 'voterguy reposnse')
-        })
+export const voterGuy = (article_id, comment_id, increment) => {
+    // console.log(comment_id, 'commentidvoterguy')
+    // console.log(article_id, 'voterguyarticleid')
+    if (article_id) {
+        return newsAPI.patch(`/articles/${article_id}`, { inc_votes: increment })
+            .then(response => {
+                // console.log(response, 'voterguy reposnse')
+            })
+    } else if (comment_id) {
+        return newsAPI.patch(`/comments/${comment_id}`, { inc_votes: increment })
+            .then(response => {
+                // console.log(response, 'voterguy reposnse')
+            })
+    }
 }

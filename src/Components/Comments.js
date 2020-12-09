@@ -13,7 +13,7 @@ const Comments = ({ comments }) => {
                             <h4>By {comment.author}:</h4>
                             <p className='comment__body'>{comment.body}</p>
 
-                            <Voter id={comment.comment_id} votes={comment.votes} />
+                            <Voter comment_id={comment.comment_id} votes={comment.votes} />
                         </li>
                     )
                 })}
