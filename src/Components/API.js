@@ -4,13 +4,18 @@ const newsAPI = axios.create({
     baseURL: 'https://sams-first-news-app.herokuapp.com/api'
 })
 
-export const getArticles = () => {
-    return newsAPI.get('/articles')
-        .then(response => {
-            // console.log('response data', response.data)
-            return response.data
+export const getArticles = (sort_by, order) => {
+
+    return newsAPI.get('/articles', {
+        params: {
+            sort_by,
+            order
         }
-        )
+    }).then(response => {
+        // console.log('response data', response.data)
+        return response.data
+    }
+    )
 }
 
 export const getArticleById = (article_id) => {
@@ -21,16 +26,20 @@ export const getArticleById = (article_id) => {
         })
 }
 
-export const getCommentsByArticleId = (article_id) => {
-    return newsAPI.get(`/articles/${article_id}/comments`)
+export const getCommentsByArticleId = (article_id, sort_by, order) => {
+    return newsAPI.get(`/articles/${article_id}/comments`, {
+        params: {
+            sort_by,
+            order
+        }
+    })
         .then(response => {
             return response.data
         })
 }
 
 export const voterGuy = (article_id, comment_id, increment) => {
-    // console.log(comment_id, 'commentidvoterguy')
-    // console.log(article_id, 'voterguyarticleid')
+
     if (article_id) {
         return newsAPI.patch(`/articles/${article_id}`, { inc_votes: increment })
             .then(response => {

@@ -6,20 +6,45 @@ import Nav from './Components/Nav';
 import Home from './Components/Home';
 import ArticleList from './Components/ArticleList';
 import Article from './Components/Article'
+import Login from './Components/Login'
 import Comments from './Components/Comments'
 
 class App extends Component {
+
+  state = {
+    loggedInUser: '',
+  }
+
+  logUserIn = (newUserName) => {
+    this.setState({ loggedInUser: newUserName })
+  }
+
   render() {
+
+    const { loggedInUser } = this.state
+
+
     return (
       <div>
-        <Title />
-        <Nav />
-        <Router>
-          <Home path='/' />
-          <ArticleList path='/articles' />
-          <Article path='/articles/:article_id' />
-          <Comments path={`/articles/:article_id/comments`} />
-        </Router>
+
+        {loggedInUser.length > 0 ?
+          <div>
+            <Title loggedInUser={loggedInUser} />
+            <Nav />
+            <Router>
+              <Home path='/' />
+              <ArticleList path='/articles' />
+              <Article path='/articles/:article_id' />
+              <Comments path={`/articles/:article_id/comments`} />
+            </Router>
+          </div>
+          :
+          <div>
+            <Title loggedInUser={loggedInUser} />
+            <h2> Log in to see the news!</h2>
+            <Login logUserIn={this.logUserIn} />
+          </div>
+        }
       </div>
     );
   }

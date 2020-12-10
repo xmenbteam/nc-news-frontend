@@ -1,10 +1,16 @@
 import React from 'react';
 import '../App.css'
 
-const Title = () => {
+const Title = ({ loggedInUser }) => {
     return (
         <div>
-            <h1 className='main__title'>Welcome to the News!</h1>
+            { loggedInUser.length > 0 ? <div>
+                < h1 className='main__title' > Welcome to the News, {loggedInUser}!</h1 >
+            </div >
+                : <div>
+                    <h1 className='main__title'>Welcome to the News!</h1>
+                </div>
+            }
         </div>
     );
 };

@@ -16,7 +16,7 @@ class Voter extends Component {
         const { vote_change, hasVoted } = this.state
         return (
             <div>
-                <p>🔥 : {votes + vote_change}</p>
+                <p>{votes >= 0 ? '🔥' : '💦'}: {votes + vote_change}</p>
                 <button onClick={() => this.handleClick(1)} disabled={hasVoted ? true : false}>🔥 it up!</button>
                 <button onClick={() => this.handleClick(-1)} disabled={hasVoted ? true : false}>💦 it down!</button>
             </div>
