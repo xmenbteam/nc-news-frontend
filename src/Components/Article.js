@@ -40,7 +40,7 @@ class Article extends Component {
                     <p><Link to='/articles'>Back to Articles</Link></p>
 
                     <Voter article_id={article.article_id} votes={article.votes} />
-
+                    <br></br>
                     <button onClick={this.commentShow}>{showComments ?
                         'Hide Comments' : 'Show Comments'}</button>
                     {showComments && <Comments comments={comments} article_id={article.article_id} />}

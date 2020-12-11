@@ -13,6 +13,7 @@ class App extends Component {
 
   state = {
     loggedInUser: '',
+    userName: 'grumpy19'
   }
 
   logUserIn = (newUserName) => {
@@ -29,7 +30,7 @@ class App extends Component {
 
         {loggedInUser.length > 0 ?
           <div>
-            <Title loggedInUser={loggedInUser} />
+            <Title userName='grumpy19' loggedInUser={loggedInUser} />
             <Nav />
             <Router>
               <Home path='/' />
