@@ -3,10 +3,11 @@ import { getArticles } from './API'
 import { Link } from '@reach/router'
 import Voter from './Voter'
 import Sorter from './Sorter'
+import Paginator from './Paginator'
 import '../App.css'
 
 class ArticleList extends Component {
-    state = { articles: [], isLoading: true, sort_by: 'created_at', order: 'desc' }
+    state = { articles: [], isLoading: true, sort_by: 'created_at', order: 'desc', currentPage: 1, postsPerPage: 5 }
 
     componentDidMount = () => {
         getArticles().then(articles => {
@@ -29,7 +30,18 @@ class ArticleList extends Component {
     }
 
     render() {
-        const { isLoading, articles, sort_by, order } = this.state
+        const { isLoading, articles, sort_by, order, currentPage, postsPerPage } = this.state
+
+        //Get current posts
+        const indexOfLastPost = currentPage * postsPerPage
+        const indexOfFirstPost = indexOfLastPost - postsPerPage
+        const currentPosts = articles.slice(indexOfFirstPost, indexOfLastPost)
+
+        //change page
+        const paginate = (currentPage) => { this.setState({ currentPage }) }
+
+        console.log(currentPage)
+        console.log(postsPerPage)
 
         if (isLoading === true) {
             return <div>
@@ -38,12 +50,15 @@ class ArticleList extends Component {
         }
         else {
             return (
+
                 <div className='articles'>
-                    <h2>Articles</h2>
+
+                    <h1 className='main__title'>Articles</h1>
+                    <h3>You have {articles.length} articles to search through!</h3>
                     <ul className='article__list'>
                         <Sorter sorterFunc={this.sorterFunc} sort_by={sort_by} order={order} />
-
-                        {articles.map(article => {
+                        <Paginator postsPerPage={postsPerPage} totalPosts={articles.length} paginate={paginate} />
+                        {currentPosts.map(article => {
                             return (
 
                                 <li key={article.article_id} className='article__card'>
@@ -59,6 +74,7 @@ class ArticleList extends Component {
                             )
                         })}
                     </ul>
+
                 </div>
             );
         }

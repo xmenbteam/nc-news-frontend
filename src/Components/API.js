@@ -38,6 +38,16 @@ export const getCommentsByArticleId = (article_id, sort_by, order) => {
         })
 }
 
+export const posterGuy = (article_id, thingToPost) => {
+    return newsAPI.post(`/articles/${article_id}`,
+        thingToPost)
+        .then(response => {
+            return response
+        }).catch(err => {
+            console.dir(err)
+        })
+}
+
 export const voterGuy = (article_id, comment_id, increment) => {
 
     if (article_id) {
@@ -52,3 +62,4 @@ export const voterGuy = (article_id, comment_id, increment) => {
             })
     }
 }
+

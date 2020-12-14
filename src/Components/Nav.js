@@ -14,7 +14,7 @@ class Nav extends Component {
                         <Link to='/articles' className='nav__btn'>Articles</Link>
                     </li>
                     <li>
-                        <Link to='/topics' className='nav__btn'>Topics</Link>
+                        <Link to='/user' className='nav__btn'>User</Link>
                     </li>
 
 

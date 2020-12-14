@@ -18,24 +18,25 @@ class App extends Component {
 
   logUserIn = (newUserName) => {
     this.setState({ loggedInUser: newUserName })
+
   }
 
   render() {
 
-    const { loggedInUser } = this.state
-
+    const { loggedInUser, userName } = this.state
 
     return (
-      <div>
+
+      <div className='body'>
 
         {loggedInUser.length > 0 ?
-          <div>
+          <div >
             <Title userName='grumpy19' loggedInUser={loggedInUser} />
             <Nav />
             <Router>
               <Home path='/' />
               <ArticleList path='/articles' />
-              <Article path='/articles/:article_id' />
+              <Article userName={userName} path='/articles/:article_id' />
               <Comments path={`/articles/:article_id/comments`} />
             </Router>
           </div>

@@ -6,7 +6,7 @@ const Title = ({ userName, loggedInUser }) => {
         <div>
             { loggedInUser.length > 0 ? <div>
                 < h1 className='main__title' > Welcome to the News, {loggedInUser}!</h1 >
-                <p>You are logged in as {userName}</p>
+                <p className='main__title--subtitle'>You are logged in as <b>{userName}</b></p>
             </div >
                 : <div>
                     <h1 className='main__title'>Welcome to the News!</h1>
