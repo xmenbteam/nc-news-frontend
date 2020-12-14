@@ -38,10 +38,9 @@ class ArticleList extends Component {
         const currentPosts = articles.slice(indexOfFirstPost, indexOfLastPost)
 
         //change page
-        const paginate = (currentPage) => { this.setState({ currentPage }) }
-
-        console.log(currentPage)
-        console.log(postsPerPage)
+        const paginate = (currentPage) => {
+            this.setState({ currentPage })
+        }
 
         if (isLoading === true) {
             return <div>
@@ -54,10 +53,12 @@ class ArticleList extends Component {
                 <div className='articles'>
 
                     <h1 className='main__title'>Articles</h1>
-                    <h3>You have {articles.length} articles to search through!</h3>
+                    <h3 className='main__title'>You have {articles.length} articles to read through!</h3>
+                    <Sorter sorterFunc={this.sorterFunc} sort_by={sort_by} order={order} />
+                    <Paginator currentPage={currentPage} postsPerPage={postsPerPage} totalPosts={articles.length} paginate={paginate} />
                     <ul className='article__list'>
-                        <Sorter sorterFunc={this.sorterFunc} sort_by={sort_by} order={order} />
-                        <Paginator postsPerPage={postsPerPage} totalPosts={articles.length} paginate={paginate} />
+
+
                         {currentPosts.map(article => {
                             return (
 

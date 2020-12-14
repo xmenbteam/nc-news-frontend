@@ -63,3 +63,10 @@ export const voterGuy = (article_id, comment_id, increment) => {
     }
 }
 
+export const getSingleUser = (username => {
+    return newsAPI.get(`/users/${username}`)
+        .then(response => {
+            console.log('username response ---->', response)
+            return response
+        })
+})

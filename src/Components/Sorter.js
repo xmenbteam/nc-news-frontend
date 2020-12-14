@@ -30,6 +30,7 @@ class Sorter extends Component {
 
         return (
             <div>
+                <h4 className='main__title--subtitle'>Sort By...</h4>
                 <select
                     name='sort_by'
                     className='drop__down__list'

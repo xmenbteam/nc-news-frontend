@@ -8,6 +8,7 @@ import ArticleList from './Components/ArticleList';
 import Article from './Components/Article'
 import Login from './Components/Login'
 import Comments from './Components/Comments'
+import User from './Components/User'
 
 class App extends Component {
 
@@ -38,6 +39,7 @@ class App extends Component {
               <ArticleList path='/articles' />
               <Article userName={userName} path='/articles/:article_id' />
               <Comments path={`/articles/:article_id/comments`} />
+              <User path='/user' username={userName} />
             </Router>
           </div>
           :

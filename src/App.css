@@ -9,7 +9,7 @@ height:100%;
 max-width: 50em;
 min-width: 50em;
 background-image: linear-gradient(#16697A, #FFA62B);
-;
+
 }
 
 .main__title {
@@ -64,7 +64,7 @@ padding-right: 2em;
   list-style-type: none;
   display: inline;
 max-width: 10em;
-padding-top: 2em;
+
 }
 
 .article__card {
@@ -112,8 +112,17 @@ font-family: Arial, Helvetica, sans-serif;
 .page-item{
 
   list-style-type: none;
-    display: inline-flex;
-    border: 5px solid black;
-    width: 20px;
+    display: inline-table;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    border: 0.5px solid black;
+    width: 3em;
+height: 2em;
+padding:0.2em;
+font-weight: 600;
+background-color: #d7eef2;
+}
 
+.sort-by{
+  color:#FFA62B
 }

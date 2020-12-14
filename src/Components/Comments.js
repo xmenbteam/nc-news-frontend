@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Voter from './Voter'
 import Poster from './Poster'
+import Paginator from './Paginator'
 import { getCommentsByArticleId } from './API'
 
 
 class Comments extends Component {
 
-    state = { comments: [], isLoading: true }
+    state = { comments: [], isLoading: true, currentPage: 1, postsPerPage: 10 }
 
     componentDidMount = () => {
 
@@ -27,15 +28,22 @@ class Comments extends Component {
     render() {
 
         const { article_id, userName } = this.props
-        const { comments, isLoading } = this.state
+        const { comments, isLoading, currentPage, postsPerPage } = this.state
+
+        const indexOfLastPost = currentPage * postsPerPage
+        const indexOfFirstPost = indexOfLastPost - postsPerPage
+        const currentPosts = comments.slice(indexOfFirstPost, indexOfLastPost)
+
+        const paginate = (currentPage) => { this.setState({ currentPage }) }
 
         if (isLoading) return <p>LOADING BRO</p>
         else {
             return (
                 <div>
                     <Poster updateComments={this.updateComments} userName={userName} article_id={article_id} />
+                    <Paginator currentPage={currentPage} postsPerPage={postsPerPage} totalPosts={comments.length} paginate={paginate} />
                     <ul className='comments__list'>
-                        {comments.map((comment) => {
+                        {currentPosts.map((comment) => {
                             return (
                                 <li className='article__card' key={comment.comment_id}>
                                     <h4>By {comment.author}:</h4>
